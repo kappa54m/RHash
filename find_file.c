@@ -375,6 +375,8 @@ static int dir_scan(file_t* start_dir, file_search_data* data)
 	int options = data->options;
 	int fstat_bit = (data->options & FIND_FOLLOW_SYMLINKS ? FileInitRunFstat : FileInitRunLstat);
 	file_t file;
+	log_msg("Follow symlinks? %d FileInitRunFstat=%d FileInitRunLStat=%d\n",
+		data->options & FIND_FOLLOW_SYMLINKS, fstat_bit == FileInitRunFstat, fstat_bit == FileInitRunLstat);
 
 	if (max_depth < 0 || max_depth >= MAX_DIRS_DEPTH)
 		max_depth = MAX_DIRS_DEPTH - 1;
